@@ -1,3 +1,61 @@
-export function WhoAreYouForm() {
-    
+import { useState } from 'react';
+import { CornerDownLeft } from 'lucide-react';
+
+export default function MessageInput() {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSubmit = async () => {
+    if (!inputValue.trim()) {
+      alert('Please enter a message');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/slack', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: inputValue }),
+      });
+
+      const data = await response.json();
+      console.log('Response:', data);
+
+      if (response.ok) {
+        alert('아항!');
+        setInputValue('');
+      } else {
+        throw new Error(data.error || 'Something went wrong');
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(`Error: ${error.message}`);
+      } else {
+        alert('An unknown error occurred');
+      }
+    }
+  };
+
+  return (
+    <div className="bg-black rounded-xl shadow-lg h-fit flex flex-row px-1 items-center w-full">
+      <input
+        type="text"
+        placeholder="Who are you?"
+        className="bg-transparent text-white placeholder:text-gray-400 ring-0 outline-none resize-none py-2.5 px-2 font-mono text-sm h-10 w-full transition-all duration-300"
+        value={inputValue}
+        onChange={handleInputChange}
+      />
+      <button
+        className="text-white rounded-lg hover:bg-white/25 focus:bg-white/25 w-8 h-8 aspect-square flex items-center justify-center ring-0 outline-0"
+        onClick={handleSubmit}
+      >
+        <CornerDownLeft size={16} className="-ml-px" />
+      </button>
+    </div>
+  );
 }

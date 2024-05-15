@@ -8,6 +8,12 @@ export default function MessageInput() {
     setInputValue(e.target.value);
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
   const handleSubmit = async () => {
     if (!inputValue.trim()) {
       alert('Please enter a message');
@@ -49,6 +55,7 @@ export default function MessageInput() {
         className="bg-transparent text-white placeholder:text-gray-400 ring-0 outline-none resize-none py-2.5 px-2 font-mono text-sm h-10 w-full transition-all duration-300"
         value={inputValue}
         onChange={handleInputChange}
+        onKeyPress={handleKeyPress}
       />
       <button
         className="text-white rounded-lg hover:bg-white/25 focus:bg-white/25 w-8 h-8 aspect-square flex items-center justify-center ring-0 outline-0"

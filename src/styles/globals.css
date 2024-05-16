@@ -1,6 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes pop-up {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.heart {
+  position: absolute;
+  /* color: #e0245e; 하트 색상 */
+  font-size: 2rem; /* 하트 크기 */
+  animation: pop-up 1s ease-out;
+  pointer-events: none; /* 클릭 이벤트 무시 */
+}
+
 /* 
 :root {
   --foreground-rgb: 0, 0, 0;

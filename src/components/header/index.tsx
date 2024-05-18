@@ -1,44 +1,49 @@
+import { Nanum_Gothic_Coding } from 'next/font/google';
+import Link from 'next/link';
 import { useState } from 'react';
-import { Pixelify_Sans } from "next/font/google";
+import { Home , GraduationCap, CircleUserRound, BugPlay} from 'lucide-react';
+const nanumGothicCoding = Nanum_Gothic_Coding({
+    subsets: ['latin'],
+    weight: '400'
+  });
 
-import CatIcon from '../../../public/icons/cat.svg';
-import FrogIcon from '../../../public/icons/frog.svg';
-import TurtleIcon from '../../../public/icons/turtle.svg';
-import MusicIcon from '../../../public/icons/music.svg';
-import BalloonIcon from '../../../public/icons/balloon.svg';
-import UfoIcon from '../../../public/icons/ufo.svg';
-
-const icons = [CatIcon, FrogIcon, TurtleIcon, MusicIcon, BalloonIcon, UfoIcon];
-const pixelify = Pixelify_Sans({ subsets: ["latin"] });
-
-export default function MainHeader() {
-  const [showIcon, setShowIcon] = useState(false);
-  const [IconComponent, setIconComponent] = useState(() => icons[0]);
-  const [rightPosition, setRightPosition] = useState<string>('-1rem');
-
-  const handleMouseEnter = () => {
-    const randomIndex = Math.floor(Math.random() * icons.length);
-    const randomRight = `${Math.floor(Math.random() * 20) + 1}rem`;
-    
-    setIconComponent(() => icons[randomIndex]);
-    setRightPosition(randomRight);
-    setShowIcon(true);
-    setTimeout(() => setShowIcon(false), 1000); // 1초 후에 아이콘 사라지기
-  };
-
-  return (
-    <div className="relative">
-      <h1
-        className={`${pixelify.className} transition hover:scale-110 z-10 text-4xl animate-title font-display whitespace-nowrap bg-clip-text mb-8`}
-        onMouseEnter={handleMouseEnter}
-      >
-        Welcome ! I am Hyewon
-      </h1>
-      {showIcon && (
-          <span className="heart" style={{ top: '-2rem', right: rightPosition }}>
-            <IconComponent width={32} height={32} /> {/* 랜덤 아이콘 사용 */}
-          </span>
-        )}
-    </div>
-  );
+export default function Header() {
+    return (
+      <nav className={`${nanumGothicCoding.className} bg-white border-gray-200 dark:bg-gray-900`}>
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto p-4">
+          <div className="w-full md:block md:w-auto" id="navbar-default">
+            <ul className="font-medium grid grid-cols-4 gap-2 border border-gray-100 rounded-lg bg-gray-50 md:flex-row rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <li className='flex flex-col items-center justify-center w-full px-2 py-2 rounded-lg hover:bg-gray-100 transition-colors'>
+                <Link
+                  href="/"
+                  className="block py-2 hover:bg-gray-100 transition-colors rounded md:bg-transparent md:text-gray-700 md:p-0 dark:text-white">
+                  <Home size={20} className='-ml-px'/>
+                </Link>
+              </li>
+              <li className='flex flex-col items-center justify-center w-full px-2 py-2 rounded-lg hover:bg-gray-100 transition-colors'>
+                <Link
+                  href="#"
+                  className="block py-2 hover:bg-gray-100 transition-colors rounded md:bg-transparent md:text-gray-700 md:p-0 dark:text-white">
+                  <CircleUserRound size={20} className='-ml-px'/>
+                </Link>
+              </li>
+              <li className='flex flex-col items-center justify-center w-full px-2 py-2 rounded-lg hover:bg-gray-100 transition-colors'>
+                <Link
+                  href="#"
+                  className="block py-2 hover:bg-gray-100 transition-colors rounded md:bg-transparent md:text-gray-700 md:p-0 dark:text-white">
+                  <GraduationCap size={20} className='-ml-px'/>
+                </Link>
+              </li>
+              <li className='flex flex-col items-center justify-center w-full px-2 py-2 rounded-lg hover:bg-gray-100 transition-colors'>
+                <Link
+                  href="#"
+                  className="block py-2 hover:bg-gray-100 transition-colors rounded md:bg-transparent md:text-gray-700 md:p-0 dark:text-white">
+                  <BugPlay size={20} className='-ml-px'/>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    );
 }

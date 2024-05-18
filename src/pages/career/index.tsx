@@ -6,7 +6,7 @@ import { TextEncrypted } from "@/components/text/encryptedText";
 import Link from "next/link";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import { tectStack } from "./teck";
-import {BasicSwitch, SlidingTabBar} from "@/components/toggle/switch";
+import {BasicSwitch} from "@/components/toggle/switch";
 import { useState } from "react";
 
 const notoSansKR_400 = Noto_Sans_KR({

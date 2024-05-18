@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CornerDownLeft } from 'lucide-react';
 import MyDialog from '@/components/dialog';
+import React from 'react';
 
 export default function MessageInput() {
   const [inputValue, setInputValue] = useState('');
@@ -18,7 +19,10 @@ export default function MessageInput() {
 
   const handleSubmit = async () => {
     setIsDialogOpen(true);
-
+    
+    if (!inputValue) {
+      return;
+    }
     try {
       const response = await fetch('/api/slack', {
         method: 'POST',
@@ -45,6 +49,26 @@ export default function MessageInput() {
     }
   };
 
+  React.useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === 'k' && e.metaKey) {
+        setIsDialogOpen(true)
+      }
+
+      if (e.key === 'Escape') {
+        console.log('esc')
+        handleModalToggle()
+      }
+    }
+
+    document.addEventListener('keydown', down)
+    return () => document.removeEventListener('keydown', down)
+  }, [])
+
+  function handleModalToggle() {
+    setIsDialogOpen(!isDialogOpen)
+  }
+  
   return (
     <>
     <div className="bg-black rounded-xl shadow-lg h-fit flex flex-row px-1 items-center w-full">

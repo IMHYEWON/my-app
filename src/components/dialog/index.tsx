@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { Nanum_Gothic_Coding } from 'next/font/google';
 import { icons } from '../../../public/icons/icons';
+import Tooltip from '../tooltip';
 
 const nanumGothicCoding = Nanum_Gothic_Coding({
   subsets: ['latin'],
@@ -20,7 +21,6 @@ export default function MyDialog({ isOpen, onClose }: DialogProps) {
     { icon: icons.redFolder, label: 'What I like', href: '/whatilike' },
   ];
 
-
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" onClose={onClose} className="fixed z-10 inset-0 overflow-y-auto">
@@ -34,7 +34,7 @@ export default function MyDialog({ isOpen, onClose }: DialogProps) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-          <div className="fixed inset-0 bg-black bg-opacity-10 transition-opacity backdrop-blur" />
+            <div className="fixed inset-0 bg-black bg-opacity-10 transition-opacity backdrop-blur" />
           </Transition.Child>
           <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
             &#8203;
@@ -50,23 +50,25 @@ export default function MyDialog({ isOpen, onClose }: DialogProps) {
           >
             <div className="inline-block align-bottom bg-white rounded-lg px-6 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:align-middle sm:max-w-2xl sm:w-full sm:mt-[-10rem]">
               <div>
-              <div className="mt-3 text-center sm:m-5">
-                <Dialog.Title as="h3" className={`${nanumGothicCoding.className} text-lg leading-6 text-gray-600`}>
-                  Wanna Know About Me?
-                </Dialog.Title>
-                <div className="mt-4 grid grid-cols-3 gap-4">
-                  {buttons.map((button) => (
-                    <a
-                      key={button.label}
-                      href={button.href}
-                      className="flex flex-col items-center my-4 px-6 py-4 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors"
-                    >
-                      <button.icon className="w-12 h-12 mr-2" />
-                      {/* {button.label} */}
-                    </a>
-                  ))}
+                <div className="mt-3 text-center sm:m-5">
+                  <Dialog.Title as="h3" className={`${nanumGothicCoding.className} text-lg leading-6 text-gray-600`}>
+                    Wanna Know About Me?
+                  </Dialog.Title>
+                  <div className="mt-4 grid grid-cols-3 gap-4">
+                    {buttons.map((button) => (
+                      <Tooltip key={button.label} content={button.label}>
+                        <a
+                          key={button.label}
+                          href={button.href}
+                          className="flex flex-col items-center justify-center w-full px-6 py-4 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors"
+                        >
+                          <button.icon className="w-12 h-12" />
+                          {/* {button.label} */}
+                        </a>
+                      </Tooltip>
+                    ))}
+                  </div>
                 </div>
-              </div>
               </div>
             </div>
           </Transition.Child>

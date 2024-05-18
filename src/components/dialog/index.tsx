@@ -54,13 +54,13 @@ export default function MyDialog({ isOpen, onClose }: DialogProps) {
                   <Dialog.Title as="h3" className={`${nanumGothicCoding.className} text-lg leading-6 text-gray-600`}>
                     Wanna Know About Me?
                   </Dialog.Title>
-                  <div className="mt-4 grid grid-cols-3 gap-4">
+                  <div className="mt-4 py-4 grid grid-cols-3 gap-4">
                     {buttons.map((button) => (
-                      <Tooltip key={button.label} content={button.label}>
+                      <Tooltip key={button.label} content={button.label} direction={'top'}>
                         <a
                           key={button.label}
                           href={button.href}
-                          className="flex flex-col items-center justify-center w-full px-6 py-4 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors"
+                          className="flex flex-col items-center justify-center w-full px-6 py-6 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors"
                         >
                           <button.icon className="w-12 h-12" />
                           {/* {button.label} */}

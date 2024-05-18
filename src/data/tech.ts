@@ -1,5 +1,4 @@
-
-export const tectStack = [
+export const techStack = [
     {
       name: 'Production',
       skills: [

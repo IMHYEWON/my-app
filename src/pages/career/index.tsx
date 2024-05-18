@@ -5,7 +5,7 @@ import { Noto_Sans_KR, Nanum_Gothic_Coding, Inter } from "next/font/google";
 import { TextEncrypted } from "@/components/text/encryptedText";
 import Link from "next/link";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
-import { tectStack } from "./teck";
+import { techStack } from "@/data/tech";
 import {BasicSwitch} from "@/components/toggle/switch";
 import { useState } from "react";
 
@@ -24,8 +24,8 @@ const inter = Inter({
     weight: '500'
 });
 
-const productionTechStack = tectStack[0];
-const developmentTechStack = tectStack[1];
+const productionTechStack = techStack[0];
+const developmentTechStack = techStack[1];
 
 export default function Career() {
     const [isSwitchChecked, setIsSwitchChecked] = useState(false);

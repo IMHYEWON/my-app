@@ -1,5 +1,5 @@
 import MessageInput from '@/components/whoareyou';
-import MainHeader from "@/components/header";
+import MainHeader from "@/components/heading";
 import Head from "next/head";
 
 export default function Home() {

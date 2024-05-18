@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { Nanum_Gothic_Coding } from 'next/font/google';
 import { icons } from '../../../public/icons/icons';
-import Tooltip from '../tooltip';
+import Tooltip from '@/components/tooltip';
 
 const nanumGothicCoding = Nanum_Gothic_Coding({
   subsets: ['latin'],

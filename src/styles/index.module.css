@@ -1,0 +1,9 @@
+/* styles/index.module.css */
+.dotbackground {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAwAB/AXu94sAAAAASUVORK5CYII=');
+    background-size: 20px 20px; /* Adjust the size of the dots */
+    background-repeat: repeat;
+    background-color: #ffffff; /* Fallback color */
+    min-height: 100vh; /* Ensure the background covers the full viewport height */
+  }
+  

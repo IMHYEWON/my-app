@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Pixelify_Sans } from "next/font/google";
+
 import CatIcon from '../../../public/icons/cat.svg';
 import FrogIcon from '../../../public/icons/frog.svg';
 import TurtleIcon from '../../../public/icons/turtle.svg';
@@ -7,8 +9,9 @@ import BalloonIcon from '../../../public/icons/balloon.svg';
 import UfoIcon from '../../../public/icons/ufo.svg';
 
 const icons = [CatIcon, FrogIcon, TurtleIcon, MusicIcon, BalloonIcon, UfoIcon];
+const pixelify = Pixelify_Sans({ subsets: ["latin"] });
 
-export default function Header() {
+export default function MainHeader() {
   const [showIcon, setShowIcon] = useState(false);
   const [IconComponent, setIconComponent] = useState(() => icons[0]);
   const [rightPosition, setRightPosition] = useState<string>('-1rem');
@@ -26,7 +29,7 @@ export default function Header() {
   return (
     <div className="relative">
       <h1
-        className="transition hover:scale-110 z-10 text-4xl animate-title font-display whitespace-nowrap bg-clip-text mb-8"
+        className={`${pixelify.className} transition hover:scale-110 z-10 text-4xl animate-title font-display whitespace-nowrap bg-clip-text mb-8`}
         onMouseEnter={handleMouseEnter}
       >
         Welcome ! I am Hyewon

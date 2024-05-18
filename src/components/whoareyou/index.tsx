@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { CornerDownLeft } from 'lucide-react';
+import MyDialog from '@/components/dialog';
 
 export default function MessageInput() {
   const [inputValue, setInputValue] = useState('');
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -15,10 +17,7 @@ export default function MessageInput() {
   };
 
   const handleSubmit = async () => {
-    if (!inputValue.trim()) {
-      alert('Please enter a message');
-      return;
-    }
+    setIsDialogOpen(true);
 
     try {
       const response = await fetch('/api/slack', {
@@ -31,23 +30,23 @@ export default function MessageInput() {
 
       const data = await response.json();
       console.log('Response:', data);
-
       if (response.ok) {
-        alert('아항!');
         setInputValue('');
       } else {
         throw new Error(data.error || 'Something went wrong');
       }
+
     } catch (error) {
       if (error instanceof Error) {
-        alert(`Error: ${error.message}`);
+        console.log(`Error: ${error.message}`);
       } else {
-        alert('An unknown error occurred');
+        console.log('An unknown error occurred');
       }
     }
   };
 
   return (
+    <>
     <div className="bg-black rounded-xl shadow-lg h-fit flex flex-row px-1 items-center w-full">
       <input
         type="text"
@@ -64,5 +63,8 @@ export default function MessageInput() {
         <CornerDownLeft size={16} className="-ml-px" />
       </button>
     </div>
+    <MyDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
+
+    </>
   );
 }

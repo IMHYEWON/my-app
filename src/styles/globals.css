@@ -17,12 +17,34 @@
   }
 }
 
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
 .heart {
   position: absolute;
   /* color: #e0245e; 하트 색상 */
   font-size: 2rem; /* 하트 크기 */
   animation: pop-up 1s ease-out;
   pointer-events: none; /* 클릭 이벤트 무시 */
+}
+
+.triangle {
+  @apply w-0 h-0 border-solid;
+  border-width: 24px 24px 0 24px; /* 삼각형의 크기를 조절합니다 */
+  border-color: #FFB400 transparent transparent transparent; /* 삼각형의 색상을 조절합니다 */
+  animation: pulse 1s infinite; /* 애니메이션 적용 */
+}
+
+@media (max-width: 640px) {
+  .triangle {
+    border-width: 12px 12px 0 12px; /* sm 크기 */
+  }
 }
 
 /* 

@@ -35,7 +35,7 @@ export const TextTypingEffectWithTexts: React.FC<TextTypingEffectProps> = ({
   }, []);
 
   return (
-    <span className="text-black dark:text-white" key={textIndex}>
+    <span className="text-black" key={textIndex}>
       {textToShow}
     </span>
   );

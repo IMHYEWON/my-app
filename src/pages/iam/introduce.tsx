@@ -49,3 +49,24 @@ export default function Iam() {
         </>
     )
 };
+
+
+
+export async function getServerSideProps() {
+    console.log('getServerSideProps');
+
+    const res = await fetch(process.env.VERCEL_URL + '/api/projects', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+    const projects = await res.json();
+
+    console.log(projects);
+    return {
+        props: {
+            projects
+        }
+    }
+}

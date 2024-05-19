@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body, #__next {
+  height: 100%;
+}
+
 @keyframes pop-up {
   0% {
     transform: scale(0);

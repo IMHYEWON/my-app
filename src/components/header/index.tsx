@@ -1,6 +1,5 @@
 import { Nanum_Gothic_Coding } from 'next/font/google';
 import Link from 'next/link';
-import { useState } from 'react';
 import { Home, GraduationCap, CircleUserRound, BugPlay } from 'lucide-react';
 import Tooltip from "@/components/tooltip";
 

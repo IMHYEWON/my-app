@@ -3,7 +3,7 @@ import { useTypingEffect } from "@/components/hooks/useTypingEffect"; // 경로�
 import Link from "next/link";
 
 export default function Iam() {
-    const text = "Hi, What brings you here?\n Anyway, I'm Hyewon. Nice to meet you!";
+    const text = "Hi, What brings you here?\n Anyway, I'm Hyewon!";
     const typedText = useTypingEffect(text, 50, true);
 
     return (

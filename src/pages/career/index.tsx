@@ -53,7 +53,7 @@ export default function Career() {
         <>
             <div className="absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
                 <Header />
-                <section id="about" className="flex flex-col items-center justify-center mx-10">
+                <section id="about" className="flex flex-col items-center justify-center mx-4 sm:mx-10">
                     <div className="pt-[10vh] sm:pt-[20vh] flex flex-col items-center justify-center">
                         <Image alt="profile" src={"/images/circleprofile.png"} width={180} height={180}></Image>
                         <h3 className="underline decoration-2 decoration-lime-500/[.33] text-xl sm:text-2xl m-4">

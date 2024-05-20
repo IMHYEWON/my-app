@@ -9,6 +9,7 @@ import { techStack } from "@/data/tech";
 import { BasicSwitch } from "@/components/toggle/switch";
 import { useState } from "react";
 import Experience from "@/components/career/experience";
+import Tooltip from "@/components/tooltip";
 
 const notoSansKR_400 = Noto_Sans_KR({
     subsets: ['latin'],
@@ -65,8 +66,18 @@ export default function Career() {
                             </h3>
                             <h1 className={`${notoSansKR_400.className} text-2xl sm:text-4xl mb-2 font-bold
                                             dark:text-slate-50`}>장혜원, Hyewon Jang</h1>
-                            <p className={`${nanumGothicCoding.className} text-l mb-2 
-                                            text-stone-600 dark:text-slate-100`}>안녕하세요 Hello Bonjour</p>
+                            <div className="flex flex-row">
+                                <p className={`${nanumGothicCoding.className} text-md mb-2 mr-2 hover:font-bold text-stone-600 dark:text-slate-100`}>안녕하세요</p>
+                                <Tooltip key={'eng'} content={'기본 회화정도 할 수 있어요.'} direction={'bottom'}>
+                                    <p className={`${nanumGothicCoding.className} text-l mb-2 mr-2 hover:font-bold text-stone-600 dark:text-slate-100`}>Hello</p>
+                                </Tooltip>
+                                <Tooltip key={'jap'} content={'배운지 50일 됐어요.'} direction={'bottom'}>
+                                    <p className={`${nanumGothicCoding.className} text-l mb-2 mr-2 hover:font-bold text-stone-600 dark:text-slate-100`}>こんにちは</p>
+                                </Tooltip>
+                                <Tooltip key={'fre'} content={'알파벳을 읽을 수 있어요.'} direction={'bottom'}>
+                                    <p className={`${nanumGothicCoding.className} text-l mb-2 mr-2 hover:font-bold text-stone-600 dark:text-slate-100`}>Bonjour</p>
+                                </Tooltip>
+                            </div>
                             <div className={`${nanumGothicCoding.className}`} >
                                 <div className="flex flex-row items-center mt-1">
                                     <Mailbox size={30} className="rounded-full p-1 dark:hover:bg-stone-200 hover:bg-gray-100 transition" />

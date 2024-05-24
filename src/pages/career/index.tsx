@@ -10,6 +10,7 @@ import { BasicSwitch } from "@/components/toggle/switch";
 import { useState } from "react";
 import Experience from "@/components/career/experience";
 import Tooltip from "@/components/tooltip";
+import { Project } from "../api/projects";
 
 const notoSansKR_400 = Noto_Sans_KR({
     subsets: ['latin'],
@@ -38,8 +39,11 @@ const interLight = Inter({
 
 const productionTechStack = techStack[0];
 const hobbyTechStack = techStack[1];
+interface ProjectProps {
+    projects: Project[];
+}
 
-export default function Career() {
+export default function Career({ projects }: ProjectProps ) {
 
     const [isHobby, setIsHobby] = useState(false);
 
@@ -123,7 +127,7 @@ export default function Career() {
                         </div>
                     </section>
                     <section id="experience" className="flex flex-col items-center justify-start mx-10">
-                        <Experience />
+                        <Experience projects={projects} />
                     </section>
                     <section id="education" className="flex flex-col items-center justify-start mx-10">
                         <div className={`${inter.className} tracking-wide  self-start mt-14 sm:mx-20 sm:px-20`}>
@@ -147,4 +151,23 @@ export default function Career() {
         </>
 
     )
+}
+
+export async function getServerSideProps() {
+    console.log('getServerSideProps');
+
+    const res = await fetch(process.env.VERCEL_URL + '/api/projects', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+    const projects = await res.json();
+
+    console.log(projects);
+    return {
+        props: {
+            projects
+        }
+    }
 }

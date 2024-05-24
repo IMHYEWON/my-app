@@ -3,6 +3,24 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
 
+type Project = {
+    period: any;
+    description: any;
+    id: number;
+    project_id: number;
+    project_name: string;
+    title: string;
+    period_start: string;
+    period_end: string;
+    descriptions: Array<Description>;
+};
+
+type Description = {
+    id: number;
+    project_id: number;
+    description: string;
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     console.log('req.method:', req);
     if (req.method === 'GET') {
@@ -25,3 +43,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(405).end(`Method ${req.method} Not Allowed`);
     }
 }
+
+export type { Project, Description };

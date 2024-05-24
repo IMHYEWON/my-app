@@ -1,5 +1,8 @@
+import { Description, Project } from "@/pages/api/projects";
+import { formatDateToYearMonth } from "@/utils/dateutils";
+import { isValidString } from "@/utils/stringutils";
 import { Inter } from "next/font/google";
-import { lotteProject, webcashProject, Period, Project} from "@/data/career";
+// import { lotteProject, webcashProject, Period, Project} from "@/data/career";
 import { Key } from "react";
 
 const inter = Inter({
@@ -12,9 +15,15 @@ const interLight = Inter({
     weight: '400'
 });
 
+type ProjectProps = {
+    projects: Project[];
+}
 
-export default function Experience() {
+export default function Experience({ projects }: ProjectProps) {
+    const lotteProject = projects && projects.filter((project) => project.project_name === '롯데e커머스');
+    const webcashProject = projects && projects.filter((project) => project.project_name === '웹케시');
 
+    console.log('lotteProject:', lotteProject);
     return (
         <>
             <div className={`${inter.className} tracking-wide self-start mt-14 sm:mx-20 sm:px-20`}>
@@ -32,20 +41,22 @@ export default function Experience() {
                         </p>
                         <p className={`${inter.className} underline text-teal-500 decoration-teal-500 ml-4 mb-2 text-md`}>Projects</p>
                         <ol className="relative border-s border-gray-200 dark:border-stone-500 ml-2 sm:ml-4 ">
-                            {lotteProject && lotteProject.projects && lotteProject.projects.map((project:Project, index:number) => (
-                            <li className="mb-6 ms-4" key={project.id}>
-                                <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white  dark:border-stone-900 dark:bg-stone-500"></div>
-                                <span className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-stone-400">{project.period.start} ~ </span>
-                                <span className="inline text-sm font-normal text-gray-400 dark:text-stone-400">{project.period.end}</span>
-                                <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">{project.title}</h3>
-                                {
-                                    project.description.map((desc:string, index:number) => (
-                                        <p key={index} className={`${interLight.className} mb-1 text-sm sm:text-base font-normal text-gray-700 dark:text-stone-100`}>
-                                            {desc}
-                                        </p>
-                                    ))
-                                }
-                            </li>
+                            {lotteProject && lotteProject.map((project: Project, index: number) => (
+                                <li className="mb-6 ms-4" key={project.id}>
+                                    <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white  dark:border-stone-900 dark:bg-stone-500"></div>
+                                    <span className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-stone-400">{formatDateToYearMonth(project.period_start)} ~ </span>
+                                    <span className={isValidString(project.period_end) ? "inline text-sm font-normal text-gray-400 dark:text-stone-400" : "inline text-sm text-teal-500 dark:text-teal-400"}>
+                                        {isValidString(project.period_end) ? formatDateToYearMonth(project.period_end) : '진행중'}
+                                    </span>
+                                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">{project.title}</h3>
+                                    {
+                                        project.descriptions.map((desc: Description, index: number) => (
+                                            <p key={desc.id} className={`${interLight.className} mb-1 text-sm sm:text-base font-normal text-gray-700 dark: dark:text-stone-100`}>
+                                                {desc.description}
+                                            </p>
+                                        ))
+                                    }
+                                </li>
                             ))}
                         </ol>
                     </li>
@@ -59,20 +70,22 @@ export default function Experience() {
                         </p>
                         <p className={`${inter.className} underline text-teal-500 decoration-teal-500 ml-4 mb-2 text-md`}>Projects</p>
                         <ol className="relative border-s border-gray-200 dark:border-stone-500 ml-2 sm:ml-4">
-                            {webcashProject && webcashProject.projects && webcashProject.projects.map((project:Project, index:number) => (
-                            <li className="mb-6 ms-4" key={project.id}>
-                                <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-stone-900 dark:bg-stone-500"></div>
-                                <span className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-stone-400">{project.period.start} ~ </span>
-                                <span className="inline text-sm font-normal text-gray-400 dark:text-stone-400">{project.period.end}</span>
-                                <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">{project.title}</h3>
-                                {
-                                    project.description.map((desc:string, index:number) => (
-                                        <p key={index} className={`${interLight.className} mb-1 text-sm sm:text-base font-normal text-gray-700 dark: dark:text-stone-100`}>
-                                            {desc}
-                                        </p>
-                                    ))
-                                }
-                            </li>
+                            {webcashProject && webcashProject.map((project: Project, index: number) => (
+                                <li className="mb-6 ms-4" key={project.id}>
+                                    <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-stone-900 dark:bg-stone-500"></div>
+                                    <span className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-stone-400">{formatDateToYearMonth(project.period_start)} ~ </span>
+                                    <span className={isValidString(project.period_end) ? "inline text-sm font-normal text-gray-400 dark:text-stone-400" : "inline text-sm text-teal-500 dark:text-teal-400"}>
+                                        {isValidString(project.period_end) ? formatDateToYearMonth(project.period_end) : '진행중'}
+                                    </span>
+                                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">{project.title}</h3>
+                                    {
+                                        project.descriptions.map((desc: Description, index: number) => (
+                                            <p key={desc.id} className={`${interLight.className} mb-1 text-sm sm:text-base font-normal text-gray-700 dark: dark:text-stone-100`}>
+                                                {desc.description}
+                                            </p>
+                                        ))
+                                    }
+                                </li>
                             ))}
                         </ol>
                     </li>

@@ -155,8 +155,8 @@ export default function Career({ projects }: ProjectProps ) {
 
 export async function getServerSideProps() {
     console.log('getServerSideProps');
-    console.log(process.env.VERCEL_URL);
-    const url = process.env.VERCEL_URL?.startsWith('http') ? process.env.VERCEL_URL : `https://${process.env.VERCEL_URL}`;
+    console.log(`https://${process.env.VERCEL_URL}`);
+    const url = process.env.VERCEL_URL?.startsWith('http') ? process.env.VERCEL_URL : 'https://my-8lg54u87h-hazels-projects-f079e5be.vercel.app';
 
 
     const res = await fetch(url + '/api/projects', {

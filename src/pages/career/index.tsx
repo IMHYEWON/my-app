@@ -168,7 +168,7 @@ export async function getServerSideProps() {
 
         const contentType = res.headers.get('content-type');
         if (!res.ok) {
-            console.error('Failed to fetch projects:', res.statusText);
+            console.error('Failed to fetch projects:', res);
             return {
                 props: {
                     projects: [],

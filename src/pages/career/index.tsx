@@ -158,20 +158,47 @@ export async function getServerSideProps() {
     console.log(`https://${process.env.VERCEL_URL}`);
     const url = process.env.VERCEL_URL?.startsWith('http') ? process.env.VERCEL_URL : 'https://my-8lg54u87h-hazels-projects-f079e5be.vercel.app';
 
+    try {
+        const res = await fetch(`${url}/api/projects`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
 
-    const res = await fetch(url + '/api/projects', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
+        const contentType = res.headers.get('content-type');
+        if (!res.ok) {
+            console.error('Failed to fetch projects:', res.statusText);
+            return {
+                props: {
+                    projects: [],
+                },
+            };
         }
-    });
-    const projects = await res.json();
 
-    
-    console.log(projects);
-    return {
-        props: {
-            projects
+        if (!contentType || !contentType.includes('application/json')) {
+            console.error('Received non-JSON response:', await res.text());
+            return {
+                props: {
+                    projects: [],
+                },
+            };
         }
+
+        const projects = await res.json();
+        console.log(projects);
+
+        return {
+            props: {
+                projects,
+            },
+        };
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+        return {
+            props: {
+                projects: [],
+            },
+        };
     }
 }

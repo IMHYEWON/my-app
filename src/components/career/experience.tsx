@@ -73,7 +73,6 @@ export default function Experience({ projects }: ProjectProps) {
                                     <h3 className="text-base sm:text-xl font-semibold text-gray-900 dark:text-white mb-2">{project.title}</h3>
                                     {project.descriptions.map((desc) => {
                                         const className = classMap[desc.flag];
-                                        console.log('desc:', desc.flag, 'className', className);
                                         // 'DEFAULT'인 경우 렌더링하지 않음
                                         if (!className) {
                                             return null;
@@ -126,8 +125,6 @@ export default function Experience({ projects }: ProjectProps) {
                                     <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">{project.title}</h3>
                                     {project.descriptions.map((desc) => {
                                         const className = classMap[desc.flag];
-                                        console.log('desc:', desc.flag, 'className', className);
-                                        // 'DEFAULT'인 경우 렌더링하지 않음
                                         if (!className) {
                                             return null;
                                         }

@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   env: {
     SLACK_WEBHOOK_URL: process.env.SLACK_WEBHOOK_URL,
+    VERCEL_URL: process.env.VERCEL_URL,
   },
   webpack(config) {
     config.module.rules.push({

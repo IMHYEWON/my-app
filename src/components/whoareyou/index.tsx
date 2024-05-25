@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { CornerDownLeft } from 'lucide-react';
-import MyDialog from '@/components/dialog';
+import { MyDialog } from '@/components/dialog';
 import React from 'react';
 
 export default function MessageInput() {

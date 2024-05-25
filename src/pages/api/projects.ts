@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
+type DescriptionFlag = 'h1' | 'h2' | 'li' | 'default' | 'OTHER';
 
 type Project = {
     period: any;
@@ -19,6 +20,7 @@ type Description = {
     id: number;
     project_id: number;
     description: string;
+    flag: DescriptionFlag;
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -44,4 +46,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 }
 
-export type { Project, Description };
+export type { Project, Description, DescriptionFlag };

@@ -12,9 +12,10 @@ export default function SiteHead({ title, description, image, url} : HeaderProps
     return (
         <Head>
             <title>{title}</title>
+            <meta title="title" content={title || "장해원의 홈ㅍHㅇ1ㅈ! -_-^ >0< "} />
             <meta
                 name="description"
-                content={description}
+                content={description || "V-_-V 장혜원의 홈페이지닷 ^-^.."}
             />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />

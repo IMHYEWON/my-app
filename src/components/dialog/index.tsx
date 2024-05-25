@@ -81,7 +81,7 @@ function MyDialog({ isOpen, onClose }: DialogProps) {
 
 
 export default function Example() {
-  let [isOpen, setIsOpen] = useState(true)
+  let [isOpen, setIsOpen] = useState(false)
 
   function open() {
     setIsOpen(true)

@@ -1,20 +1,13 @@
 import MessageInput from '@/components/whoareyou';
 import MainHeader from "@/components/heading";
 import Head from "next/head";
+import SiteHead from '@/components/meta/sitehead';
 
 export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Hyewon Homepage</title>
-        <meta
-          name="description"
-          content="Hyewon's personal homepage. Welcome! I am Hyewon."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <SiteHead title='Welcome to Hyewons home' description='Explore' image='' url=''/>
       <main
         className={`py-[15vh] sm:py-[20vh] max-w-md mx-4 sm:mx-auto space-x-2 md:space-x-8 flex flex-col items-center justify-center`}
       >

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Noto_Sans_KR, Nanum_Gothic_Coding, Inter, Nanum_Gothic } from "next/font/google";
 import { TextEncrypted } from "@/components/text/encryptedText";
 import Link from "next/link";
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
+import { Tab, TabGroup, TabList } from '@headlessui/react';
 import { techStack } from "@/data/tech";
 import { BasicSwitch } from "@/components/toggle/switch";
 import { useState } from "react";
@@ -12,7 +12,7 @@ import Experience from "@/components/career/experience";
 import Tooltip from "@/components/tooltip";
 import { Project } from "../api/projects";
 import { PrismaClient } from "@prisma/client";
-import { NextApiResponse } from "next";
+import SiteHead from "@/components/meta/sitehead";
 
 const notoSansKR_400 = Noto_Sans_KR({
     subsets: ['latin'],
@@ -58,6 +58,7 @@ export default function Career({ projects }: ProjectProps ) {
 
     return (
         <>
+            <SiteHead title='Career' description='See my Career and Experience as a developer' image='' url=''/>
             <div className="relative min-h-screen absolute inset-0 
                             bg-white dark:bg-customBlack 
                             bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#424242_1px,transparent_1px)]
@@ -147,6 +148,9 @@ export default function Career({ projects }: ProjectProps ) {
                                 </li>
                             </ol>
                         </div>
+                    </section>
+                    <section id="developer" className="flex flex-col items-center justify-start mx-10">
+                        
                     </section>
                 </div>
             </div>

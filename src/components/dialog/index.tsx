@@ -103,7 +103,7 @@ export default function Example() {
       <Transition appear show={isOpen}>
         <Dialog as="div" className="relative z-10 focus:outline-none" onClose={close} __demoMode>
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div className="flex min-h-full items-center justify-start ml-40 mt-10 p-4">
+            <div className="flex min-h-full items-center justify-start sm:ml-40 sm:mt-10 p-4">
               <TransitionChild
                 enter="ease-out duration-300"
                 enterFrom="opacity-0 transform-[scale(95%)]"
@@ -114,11 +114,12 @@ export default function Example() {
               >
                 <DialogPanel className="w-full max-w-md rounded-xl p-6 
                                       bg-gradient-to-r from-amber-500/10 from-10% via-amber-300/30 via-30% to-amber-500/10 to-90%
+                                      dark:from-amber-500/40
                                       backdrop-blur-2xl">
-                  <DialogTitle as="h3" className="text-base/7 font-medium text-stone-700">
+                  <DialogTitle as="h3" className="text-base/7 font-medium text-stone-700 dark:text-gray-100">
                     오프라인 참석 행사
                   </DialogTitle>
-                  <div className='mt-2 text-sm/6 text-stone-700'>
+                  <div className='mt-2 text-sm/6 text-stone-700 dark:text-gray-100'>
                     <ul>
                       <li className='list-disc list-inline ml-4 '>판교 퇴근길 밋업 with 인프런 #01 타입스크립트 대시보드</li>
                       <li className='list-disc list-inline ml-4 '>2회 kakao tech meet - 23.07.28</li>

@@ -11,6 +11,8 @@ import { useState } from "react";
 import Experience from "@/components/career/experience";
 import Tooltip from "@/components/tooltip";
 import { Project } from "../api/projects";
+import { PrismaClient } from "@prisma/client";
+import { NextApiResponse } from "next";
 
 const notoSansKR_400 = Noto_Sans_KR({
     subsets: ['latin'],
@@ -153,52 +155,90 @@ export default function Career({ projects }: ProjectProps ) {
     )
 }
 
+
 export async function getServerSideProps() {
-    console.log('getServerSideProps');
-    console.log(`https://${process.env.VERCEL_URL}`);
-    const url = process.env.VERCEL_URL?.startsWith('http') ? process.env.VERCEL_URL : 'https://my-8lg54u87h-hazels-projects-f079e5be.vercel.app';
+    console.log('process.env.API_FEATURE_FLA : ', process.env.API_FEATURE_FLAG);
 
-    try {
-        const res = await fetch(`${url}/api/projects`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
+    if (process.env.API_FEATURE_FLAG === 'INTERNAL') {
+        const url = process.env.VERCEL_URL?.startsWith('http') ? process.env.VERCEL_URL : 'https://my-8lg54u87h-hazels-projects-f079e5be.vercel.app';
+
+        try {
+            const res = await fetch(`${url}/api/projects`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+    
+            const contentType = res.headers.get('content-type');
+            if (!res.ok) {
+                console.error('Failed to fetch projects:', res);
+                return {
+                    props: {
+                        projects: [],
+                    },
+                };
             }
-        });
-
-        const contentType = res.headers.get('content-type');
-        if (!res.ok) {
-            console.error('Failed to fetch projects:', res);
+    
+            if (!contentType || !contentType.includes('application/json')) {
+                console.error('Received non-JSON response:', await res.text());
+                return {
+                    props: {
+                        projects: [],
+                    },
+                };
+            }
+    
+            const projects = await res.json();
+            console.log(projects);
+    
+            return {
+                props: {
+                    projects,
+                },
+            };
+        } catch (error) {
+            console.error('Error fetching projects:', error);
             return {
                 props: {
                     projects: [],
                 },
             };
         }
-
-        if (!contentType || !contentType.includes('application/json')) {
-            console.error('Received non-JSON response:', await res.text());
+    } else {
+        const prisma = new PrismaClient();
+        try {
+            const projects = await prisma.project.findMany({
+                include: {
+                    descriptions: true,
+                },
+                orderBy: {
+                    id: 'asc',
+                },
+            });
+            // Date 객체를 문자열로 변환
+            const serializedProjects = projects.map(project => ({
+                ...project,
+                period_start: project.period_start ? project.period_start.toISOString() : null,
+                period_end: project.period_end ? project.period_end.toISOString() : null,
+            }));
+    
+            return {
+                props: {
+                    projects: serializedProjects,
+                },
+            };
+        } catch (error) {
+            console.error(error);
             return {
                 props: {
                     projects: [],
                 },
             };
+        } finally {
+            await prisma.$disconnect();
         }
-
-        const projects = await res.json();
-        console.log(projects);
-
-        return {
-            props: {
-                projects,
-            },
-        };
-    } catch (error) {
-        console.error('Error fetching projects:', error);
-        return {
-            props: {
-                projects: [],
-            },
-        };
     }
+
+
 }

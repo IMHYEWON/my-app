@@ -121,7 +121,7 @@ export default function Example() {
                   </DialogTitle>
                   <div className='mt-2 text-sm/6 text-stone-700 dark:text-gray-100'>
                     <ul>
-                      <li className='list-disc list-inline ml-4 '>판교 퇴근길 밋업 with 인프런 #01 타입스크립트 대시보드</li>
+                      <li className='list-disc list-inline ml-4 '>인프런 퇴근길 밋업 - Node.js 개발자 모여라! - 22.11.29</li>
                       <li className='list-disc list-inline ml-4 '>2회 kakao tech meet - 23.07.28</li>
                       <li className='list-disc list-inline ml-4 '>데이터야놀자 2023 - 23.10.14</li>
                       <li className='list-disc list-inline ml-4 '>우아콘 2023 - 23.11.15</li>

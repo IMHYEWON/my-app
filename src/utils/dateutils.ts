@@ -7,4 +7,10 @@ function formatDateToYearMonth(dateString: string): string {
     return `${year}.${month}`;
 }
 
-export { formatDateToYearMonth };
+function calculateDay() {
+    const startDate = new Date('2024-03-31');
+    const date = new Date();
+    const diff = date.getTime() - startDate.getTime();
+    return Math.floor(diff / (1000 * 60 * 60 * 24));
+}
+export { formatDateToYearMonth, calculateDay};

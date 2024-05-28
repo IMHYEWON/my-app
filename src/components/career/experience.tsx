@@ -105,7 +105,6 @@ export default function Experience({ projects }: ProjectProps) {
                     <li className="mb-10 ms-4">
                         <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-stone-900 dark:bg-stone-500"></div>
                         <time className="mb-1 text-sm font-normal leading-none text-gray-40 dark:text-stone-400">2020.10 ~ 2022.05</time>
-                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">웹케시</h3>
                         <div className="flex items-center">
                             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">웹케시</h3>
                             <h3 className="ml-4 text-base text-gray-600 dark:text-white mb-2">연구관리, 연구성과, 지식재산권, 회계, 인사급여 등 산학협력단 업무관리 서비스</h3>

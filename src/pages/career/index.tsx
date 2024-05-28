@@ -1,12 +1,12 @@
 import Header from "@/components/header";
-import { Inter } from "next/font/google";
+import { Inter, Nanum_Gothic_Coding } from "next/font/google";
 import Experience from "@/components/career/experience";
 import { Project } from "../api/projects";
 import { PrismaClient } from "@prisma/client";
 import SiteHead from "@/components/meta/sitehead";
 import CareerMindset from "./mindset";
 import About from "./about";
-
+import { Provider, LikeButton } from "@lyket/react";
 
 const inter = Inter({
     subsets: ['latin'],
@@ -14,15 +14,46 @@ const inter = Inter({
 });
 
 
+const nanumGothicCoding = Nanum_Gothic_Coding({
+    subsets: ['latin'],
+    weight: '400'
+});
+
 interface ProjectProps {
     projects: Project[];
 }
 
-export default function Career({ projects }: ProjectProps ) {
+export default function Career({ projects }: ProjectProps) {
+
+    const handleSubmit = async function (userLiked:boolean) {
+
+        if (!userLiked) {
+            return;
+        }
+        const likeMessage = '누군가 좋아요를 눌렀어!';
+        try {
+            const response = await fetch('/api/slack', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: likeMessage }),
+            });
+
+            const data = await response.json();
+
+        } catch (error) {
+            if (error instanceof Error) {
+                console.log(`Error: ${error.message}`);
+            } else {
+                console.log('An unknown error occurred');
+            }
+        }
+    };
 
     return (
         <>
-            <SiteHead title='Career' description='See my Career and Experience as a developer' image='' url=''/>
+            <SiteHead title='Career' description='See my Career and Experience as a developer' image='' url='' />
             <div className="relative min-h-screen absolute inset-0 
                             bg-white dark:bg-customBlack 
                             bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#424242_1px,transparent_1px)]
@@ -46,7 +77,7 @@ export default function Career({ projects }: ProjectProps ) {
                         </div>
                     </section>
                     <section id="mindset" className="flex flex-col items-center justify-start mx-10">
-                        <CareerMindset/>
+                        <CareerMindset />
                     </section>
                     <section id="experience" className="flex flex-col items-center justify-start mx-10">
                         <Experience projects={projects} />
@@ -68,8 +99,24 @@ export default function Career({ projects }: ProjectProps ) {
                             </ol>
                         </div>
                     </section>
-                    
+                    <section id="heart" className="flex flex-col items-center mx-10">
+                        <div className={`${nanumGothicCoding.className} mt-10 mb-40 flex flex-col items-center justify-center`}>
+                            <p className="text-sm mb-4  dark:text-stone-50">이 좋아요를 누르시면 아무 일도 생기지 않지만 그저 제 기분이 조금 좋아집니다.</p>
+                            <Provider apiKey="pt_34a1e35f9003410a77964242732dfa" >
+                                <LikeButton
+                                    namespace="testing-react"
+                                    id="everybody-like-now"
+                                    component={LikeButton.templates.Twitter}
+                                    onPress={(e) => handleSubmit(e.attributes.userHasLiked)}
+                                />
+                            </Provider>
+                        </div>
+
+                    </section>
+
                 </div>
+
+
             </div>
         </>
 
@@ -90,7 +137,7 @@ export async function getServerSideProps() {
                     'Content-Type': 'application/json',
                 }
             });
-    
+
             const contentType = res.headers.get('content-type');
             if (!res.ok) {
                 console.error('Failed to fetch projects:', res);
@@ -100,7 +147,7 @@ export async function getServerSideProps() {
                     },
                 };
             }
-    
+
             if (!contentType || !contentType.includes('application/json')) {
                 console.error('Received non-JSON response:', await res.text());
                 return {
@@ -109,10 +156,10 @@ export async function getServerSideProps() {
                     },
                 };
             }
-    
+
             const projects = await res.json();
             console.log(projects);
-    
+
             return {
                 props: {
                     projects,
@@ -143,7 +190,7 @@ export async function getServerSideProps() {
                 period_start: project.period_start ? project.period_start.toISOString() : null,
                 period_end: project.period_end ? project.period_end.toISOString() : null,
             }));
-    
+
             return {
                 props: {
                     projects: serializedProjects,

@@ -80,7 +80,7 @@ function MyDialog({ isOpen, onClose }: DialogProps) {
 }
 
 
-export default function Example() {
+export default function EventDialog() {
   let [isOpen, setIsOpen] = useState(false)
 
   function open() {
@@ -114,12 +114,12 @@ export default function Example() {
               >
                 <DialogPanel className="w-full max-w-md rounded-xl p-6 
                                       bg-gradient-to-r from-amber-500/10 from-10% via-amber-300/30 via-30% to-amber-500/10 to-90%
-                                      dark:from-amber-500/40
+                                      dark:from-amber-200/80 dark:via-amber-300/80 dark:to-amber-200/80
                                       backdrop-blur-2xl">
-                  <DialogTitle as="h3" className="text-base/7 font-medium text-stone-700 dark:text-gray-100">
+                  <DialogTitle as="h3" className="text-base/7 font-medium text-stone-700 dark:text-gray-800">
                     오프라인 참석 행사
                   </DialogTitle>
-                  <div className='mt-2 text-sm/6 text-stone-700 dark:text-gray-100'>
+                  <div className='mt-2 text-sm/6 text-stone-700 dark:text-gray-800'>
                     <ul>
                       <li className='list-disc list-inline ml-4 '>인프런 퇴근길 밋업 - Node.js 개발자 모여라! - 22.11.29</li>
                       <li className='list-disc list-inline ml-4 '>2회 kakao tech meet - 23.07.28</li>
@@ -150,4 +150,4 @@ export default function Example() {
   )
 }
 
-export { MyDialog, Example };
+export { MyDialog, EventDialog };

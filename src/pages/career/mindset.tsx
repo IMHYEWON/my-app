@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import { Button } from '@headlessui/react';
 
-import { Example } from "@/components/dialog";
+import { EventDialog } from "@/components/dialog";
 
 const inter = Inter({
     subsets: ['latin'],
@@ -38,7 +38,7 @@ export default function CareerMindset() {
                     <ul className="ml-4 list-disc list-inside text-sm sm:text-base font-normal text-gray-800 dark:text-gray-100">
                         <li className="mb-0.5">Conference, 밋업, 세미나 등을 좋아합니다.</li>
                         <li className="mb-0.5 ml-4">
-                            <Example />
+                            <EventDialog />
                             에도 자주 참여하고
                             <a href='https://github.com/IMHYEWON/tech-youtube-notes' target="_blank" rel="noopener noreferrer">
                                 <Button

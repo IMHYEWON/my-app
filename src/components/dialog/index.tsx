@@ -128,7 +128,7 @@ export default function EventDialog() {
                       <li className='list-disc list-inline ml-4 '>4회 kakao tech meet - 23.12.12</li>
                       <li className='list-disc list-inline ml-4 '>『튜링의 사과』 오리지널 강의 - &apos;웹 보안의 기본 메커니즘&apos; - 24.05.02</li>
                       <li className='list-disc list-inline ml-4 '>『튜링의 사과』 오리지널 강의 - &apos;Next.js와 Vercel을 활용한 효율적인 웹 개발&apos; - 24.05.09</li>
-
+                      <li className='list-disc list-inline ml-4 '>데이터야놀자 2024 - 24.06.01</li>
 
                     </ul>
                   </div>

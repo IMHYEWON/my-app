@@ -7,6 +7,7 @@ import SiteHead from "@/components/meta/sitehead";
 import CareerMindset from "./mindset";
 import About from "./about";
 import { Provider, LikeButton } from "@lyket/react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({
     subsets: ['latin'],
@@ -60,6 +61,7 @@ export default function Career({ projects }: ProjectProps) {
                             [background-size:16px_16px] ">
                 <div className="">
                     <Header />
+                    <GoogleAnalytics gaId={`process.env.GAID`} />
                     <section id="about" className="flex flex-col items-center justify-center mx-4 sm:mx-10">
                         <About />
                     </section>

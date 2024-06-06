@@ -46,7 +46,7 @@ export default function About() {
 
     return (
         <>
-            <div className="pt-[10vh] sm:pt-[20vh] flex flex-col items-center justify-center">
+            <div className="pt-[12vh] sm:pt-[20vh] flex flex-col items-center justify-center">
                 <Image alt="profile" src={"/images/circleprofile.png"} width={180} height={180}></Image>
                 <h3 className="underline decoration-2 decoration-lime-500/[.33] dark:decoration-lime-700 text-xl sm:text-2xl m-4 dark:text-slate-50">
                     <TextEncrypted text="Software engineer" interval={50} />

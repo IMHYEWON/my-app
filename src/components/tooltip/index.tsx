@@ -39,21 +39,23 @@ export default function Tooltip({ children, content, direction }: TooltipProps) 
         {direction === 'top' && (
         <div className={`${nanumGothicCoding.className} absolute z-10 px-3 py-2
                         text-sm font-medium text-white bg-gray-900 rounded-lg 
+                        dark:bg-stone-100 dark:text-stone-900
                         shadow-sm bottom-full mb-1 left-1/2 transform -translate-x-1/2`}
             style={{ whiteSpace: 'nowrap', maxWidth: '220px' }}
             >
           {content}
-          <div className="absolute w-3 h-3 bg-gray-900 transform rotate-45 bottom-[-4px] left-1/2 -translate-x-1/2"></div>
+          <div className="absolute w-3 h-3 bg-gray-900 dark:bg-stone-100 transform rotate-45 bottom-[-4px] left-1/2 -translate-x-1/2"></div>
         </div>
         )}
         {direction === 'bottom' && (
         <div className={`${nanumGothicCoding.className} absolute z-10 px-3 py-1
                         text-sm font-medium text-white bg-stone-800 rounded-lg 
+                        dark:bg-stone-100 dark:text-stone-900
                         shadow-sm top-full mt-2 left-1/2 transform -translate-x-1/2`}
             style={{ whiteSpace: 'nowrap', maxWidth: '220px' }}
             >
           {content}
-          <div className="absolute w-3 h-3 bg-stone-800 transform rotate-45 top-[-4px] left-1/2 -translate-x-1/2"></div>
+          <div className="absolute w-3 h-3 bg-stone-800 dark:bg-stone-100 transform rotate-45 top-[-4px] left-1/2 -translate-x-1/2"></div>
         </div>)}
       </Transition>
     </div>

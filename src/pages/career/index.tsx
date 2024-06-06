@@ -26,6 +26,7 @@ interface ProjectProps {
 
 export default function Career({ projects }: ProjectProps) {
 
+    const GA_ID = process.env.GAID || '';
     const handleSubmit = async function (userLiked:boolean) {
 
         if (!userLiked) {
@@ -61,7 +62,7 @@ export default function Career({ projects }: ProjectProps) {
                             [background-size:16px_16px] ">
                 <div className="">
                     <Header />
-                    <GoogleAnalytics gaId={`process.env.GAID`} />
+                    <GoogleAnalytics gaId={GA_ID} />
                     <section id="about" className="flex flex-col items-center justify-center mx-4 sm:mx-10">
                         <About />
                     </section>

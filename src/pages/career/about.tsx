@@ -98,6 +98,14 @@ export default function About() {
                     <span className="inline underline decoration-2 decoration-teal-600/[.33] dark:decoration-teal-400 font-bold">소심한 관종</span>
                     <span className="font-medium">입니다. 조직이 당면한 문제나 불편함을 해결한 경우 Confluent 혹은 Slack으로 해결과정을 공유하는 것을 좋아합니다. (늘어가는 이모지 수와 좋아요 수를 보고 행복함을 느낍니다.)</span>
                 </div>
+                <div className={`${inter.className} tracking-wide text-sm sm:text-base text-stone-800 dark:text-stone-100 mt-2 mx-5 sm:mx-40 md:mx-52`}>
+                    <span className="font-medium ">서비스 개발자로서 가장 우선순위로 두는 가치는 </span>
+                    <span className="bg-amber-300 font-bold">고객, 비즈니스적 성과</span>
+                    <span className="font-medium">입니다. </span>
+                    <span className="font-medium">모던한 기술과 최신 트렌드를 중요하게 생각하지만, </span>
+                    <span className="font-medium inline underline decoration-2 decoration-amber-600/[.33] dark:decoration-amber-400">궁극적으로는 개발된 서비스가 비즈니스적 가치를 성공적으로 창출할 수 있도록 뒷받침하는 것이 가장 중요하다고 생각합니다.</span>
+
+                </div>
                 <div className="self-start pt-20 mt-15 sm:mx-20 sm:px-20">
                     <div className="flex justify-between items-center">
                         <p className={`${inter.className} text-2xl text-bold text-black dark:text-stone-50`}>Tech Stack</p>

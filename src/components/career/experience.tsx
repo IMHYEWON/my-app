@@ -44,7 +44,7 @@ export default function Experience({ projects }: ProjectProps) {
                             <h3 className="text-base text-gray-600 dark:text-white sm:self-center">롯데쇼핑 통합 e커머스 플랫폼</h3>
                         </div>
 
-                        <span className="inline text-base text-gray-500 dark:text-white">SO개발팀, 정직원</span>
+                        <span className="inline text-base text-gray-500 dark:text-white">BO플랫폼개발팀, 정직원</span>
 
                         <p className={`${interLight.className} mt-4 mb-2 text-sm sm:text-base font-normal text-gray-800 dark: dark:text-stone-100`}>
                             <b>MSA 기반의 이커머스 플랫폼에서 Seller Office 및 Back Office 공통시스템을 개발</b>하고 있습니다.

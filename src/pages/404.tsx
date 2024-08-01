@@ -19,7 +19,6 @@ export default function Custom404() {
                 <TextTypingEffectWithTexts/>
                 </div>
                 <p className='text-stone-600'>Thank you for visiting my place ☺️</p>
-                
             </div>
         </div>
     )

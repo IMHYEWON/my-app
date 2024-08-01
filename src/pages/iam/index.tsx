@@ -17,9 +17,10 @@ export default function Iam() {
                                 {typedText}
                             </div>
                             <div className="relative top-3 sm:top-9">
-                                <Link href="../404">
+                                <Link href="../keyword">
                                     <div className="triangle"></div>
                                 </Link>
+                                {/* <Iam /> */}
                             </div>
                         </div>
                     </div>

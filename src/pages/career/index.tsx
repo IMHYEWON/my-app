@@ -184,7 +184,7 @@ export async function getServerSideProps() {
                     descriptions: true,
                 },
                 orderBy: {
-                    id: 'asc',
+                    order: 'asc',
                 },
             });
             // Date 객체를 문자열로 변환

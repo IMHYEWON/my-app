@@ -21,6 +21,7 @@ model Project {
   period_start   DateTime
   period_end     DateTime?
   descriptions   ProjectDescription[]
+  order          Int                @default(0) 
   @@unique([project_id, project_name])
 }
 

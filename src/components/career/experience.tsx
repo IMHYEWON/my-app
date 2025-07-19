@@ -36,9 +36,19 @@ export default function Experience({ projects }: ProjectProps) {
                 <h1 className={`text-2xl mb-4 dark:text-stone-50 `}>Work Experience</h1>
                 <ol className="relative border-s border-gray-200 dark:border-stone-500">
                     <li className="mb-10 ms-4">
-                        <div className="absolute w-3 h-3 bg-teal-400 rounded-full mt-1.5 -start-1.5 border border-teal-400 dark:border-teal-900 dark:bg-teal-300"></div>
-                        <span className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-stone-400">2022.12 ~ </span>
-                        <span className="inline text-sm font-normal text-teal-500"> 재직중</span>
+                        <div className="absolute w-3 h-3 bg-orange-400 rounded-full mt-1.5 -start-1.5 border border-orange-400 dark:border-orange-400 dark:bg-orange-400"></div>
+                        <span className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-stone-400">2024.12 ~ </span>
+                        <span className="inline text-sm font-normal text-orange-400"> 재직중</span> 
+                        <div className="flex sm:flex-row content-center flex-col">
+                            <h3 className="text-xl font-semibold text-orange-500 dark:text-orange-400 mt-1 sm:mb-2 mr-4">빗썸</h3>
+                            <h3 className="text-base text-gray-600 dark:text-white sm:self-center">가상자산 거래소</h3>
+                        </div>
+                        <span className="inline text-base text-gray-500 dark:text-white">블록체인개발2팀, 정직원</span>
+
+                    </li>   
+                    <li className="mb-10 ms-4">
+                        <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-stone-900 dark:bg-stone-500"></div>
+                        <span className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-stone-400">2022.12 ~ 2024.11</span>
                         <div className="flex sm:flex-row content-center flex-col">
                             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-1 sm:mb-2 mr-4">롯데 e커머스(롯데ON)</h3>
                             <h3 className="text-base text-gray-600 dark:text-white sm:self-center">롯데쇼핑 통합 e커머스 플랫폼</h3>

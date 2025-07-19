@@ -27,11 +27,15 @@ interface ProjectProps {
 export default function Career({ projects }: ProjectProps) {
 
     const GA_ID = process.env.GAID || '';
-    const handleSubmit = async function (userLiked:boolean) {
+    const sendLikeMessage = async function (userLiked:boolean) {
 
         if (!userLiked) {
             return;
         }
+
+        // 좋아요를 누른 경우, 알러트/컨펌으로 고마움 표시
+        alert('Thank you for liking! 😊');
+
         const likeMessage = '누군가 좋아요를 눌렀어!';
         try {
             const response = await fetch('/api/slack', {
@@ -110,19 +114,14 @@ export default function Career({ projects }: ProjectProps) {
                                     namespace="testing-react"
                                     id="everybody-like-now"
                                     component={LikeButton.templates.Twitter}
-                                    onPress={(e) => handleSubmit(e.attributes.userHasLiked)}
+                                    onPress={(e) => sendLikeMessage(e.attributes.userHasLiked)}
                                 />
                             </Provider>
                         </div>
-
                     </section>
-
                 </div>
-
-
             </div>
         </>
-
     )
 }
 

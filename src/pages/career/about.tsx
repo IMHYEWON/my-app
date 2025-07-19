@@ -100,7 +100,7 @@ export default function About() {
                 </div>
                 <div className={`${inter.className} tracking-wide text-sm sm:text-base text-stone-800 dark:text-stone-100 mt-2 mx-5 sm:mx-40 md:mx-52`}>
                     <span className="font-medium ">서비스 개발자로서 가장 우선순위로 두는 가치는 </span>
-                    <span className="bg-amber-300 font-bold">고객, 비즈니스적 성과</span>
+                    <span className="bg-amber-300 font-bold dark:text-stone-900">고객, 비즈니스적 성과</span>
                     <span className="font-medium">입니다. </span>
                     <span className="font-medium">모던한 기술과 최신 트렌드를 중요하게 생각하지만, </span>
                     <span className="font-medium inline underline decoration-2 decoration-amber-600/[.33] dark:decoration-amber-400">궁극적으로는 개발된 서비스가 비즈니스적 가치를 성공적으로 창출할 수 있도록 뒷받침하는 것이 가장 중요하다고 생각합니다.</span>
